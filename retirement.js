@@ -99,26 +99,29 @@ const startProjection = (name, bal, add, rate, years) => {
     statusMsg.textContent = `Live Projection: ${name}`;
     statusMsg.style.color = "red";
     let count = 1;
-
+    let currentBal = bal;
     // TO-DO: startYear = the current year
     const startYear = new Date().getFullYear();
 
     let formattedBal = formatter.format(bal);
     output.innerHTML = `Year ${startYear} = ${formattedBal}`;
 
-    /* TODO: setup an interval to do the following
+    projectionTimer = setInterval(() => {
+        // Monthly interest calculation
         for (let i = 0; i < 12; i++) {
-            bal = ((bal + add) * (1 + (rate / 12 / 100))).toFixed(2);
+            currentBal = (currentBal + add) * (1 + (rate / 12 / 100));
         }
-        format the balance like the starting code above
-        update the output like the starting code above
-        if count is >= years
-            clear interval
-            update the statusMsg like the starting code above
-            set the statusMsg color to green like the starting code above
-        end if
-        add one to the count
-     */
+
+        // Update output with new line (Template Literal)
+        output.innerHTML += `<br>Year ${startYear + count} = ${formatter.format(currentBal)}`;
+
+        if (count >= years) {
+            clearInterval(projectionTimer);
+            statusMsg.textContent = `Projection Complete for ${name}`;
+            statusMsg.style.color = "green";
+        }
+        count++;
+    }, 500);
 };
 
 const setTestData = () => {
