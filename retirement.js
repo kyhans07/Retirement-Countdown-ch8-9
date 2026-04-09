@@ -29,7 +29,14 @@ const processEntries = (evt) => {
     let years = 0;
 
     evt.preventDefault();
-    resetForm()
+
+    if (projectionTimer) clearInterval(projectionTimer);
+    errBox.innerText = "";
+    statusMsg.textContent = "";
+    output.innerHTML = "";
+    document.querySelectorAll(".error").forEach(s => s.textContent = "*");
+
+
 
     // Grab the values for validation
     const name = nameIn.value;
@@ -109,12 +116,12 @@ const startProjection = (name, bal, add, rate, years) => {
     output.innerHTML = `Year ${startYear} = ${formattedBal}`;
 
     projectionTimer = setInterval(() => {
-        // Monthly interest calculation
+        // Monthly interest calculation loop
         for (let i = 0; i < 12; i++) {
             currentBal = (currentBal + add) * (1 + (rate / 12 / 100));
         }
 
-        // Update output with new line (Template Literal)
+        // Update output with a template literal
         output.innerHTML += `<br>Year ${startYear + count} = ${formatter.format(currentBal)}`;
 
         if (count >= years) {
@@ -123,7 +130,7 @@ const startProjection = (name, bal, add, rate, years) => {
             statusMsg.style.color = "green";
         }
         count++;
-    }, 500);
+    }, 500); // Runs every half second
 };
 
 const setTestData = () => {
