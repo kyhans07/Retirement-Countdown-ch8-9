@@ -124,7 +124,7 @@ const startProjection = (name, bal, add, rate, years) => {
         // Update output with a template literal
         output.innerHTML += `<br>Year ${startYear + count} = ${formatter.format(currentBal)}`;
 
-        if (count >= years) {
+        if (count > years) {
             clearInterval(projectionTimer);
             statusMsg.textContent = `Projection Complete for ${name}`;
             statusMsg.style.color = "green";
