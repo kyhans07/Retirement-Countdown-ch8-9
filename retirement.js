@@ -31,11 +31,30 @@ const processEntries = (evt) => {
     evt.preventDefault();
     resetForm()
 
-    // TODO: Validate Name
+    // Grab the values for validation
+    const name = nameIn.value;
+    const email = emailIn.value;
+    const dateValue = dateIn.value;
 
-    // TODO: Validate Email
-
-    // TODO: Validate Date
+    // Ensure the name is not blank
+    if (name.trim() === "") {
+        $("#name_error").textContent = nameIn.title;
+        isValid = false;
+    }
+// Make sure the email is valid
+    const emailPattern = /^[\w.\-]+@[\w.\-]+\.[a-zA-Z]+$/;
+    if (!emailPattern.test(email)) {
+        $("#email_error").textContent = emailIn.title;
+        isValid = false;
+    }
+    if (!dateValue.trim()){
+        $("#retire_date_error").textContent = dateIn.title;
+        isValid = false;
+    } else {
+// Get Date objects for the current data and the date the user inputted for
+        retirement
+        const current = new Date();
+        const date = new Date(dateValue);
 
     // TODO: Numeric Validations
 
