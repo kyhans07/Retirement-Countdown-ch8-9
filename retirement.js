@@ -135,13 +135,18 @@ const setTestData = () => {
 };
 
 const resetForm = () => {
-    /* TODO:
-        clear all input fields
-        clear the interval
-        document.querySelectorAll(".error").forEach(s => s.textContent = "*");
-        set the body width to 350px (like code above)
-        set the focus to the name input field
-     */
+    if (projectionTimer) clearInterval(projectionTimer);
+    form.reset();
+
+    output.innerHTML = "";
+    statusMsg.textContent = "";
+    errBox.innerText = "";
+
+    // Reset error spans
+    document.querySelectorAll(".error").forEach(s => s.textContent = "*");
+
+    document.body.style.width = "350px";
+    nameIn.focus();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
