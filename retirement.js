@@ -80,17 +80,20 @@ const processEntries = (evt) => {
             isValid = false;
         }
 
-
-    /* TODO: Code try-catch logic
-        try
-            if not valid then throw error "Please correct the entries highlighted below."
-            document.body.style.width = "350px";
-            startProjection(nameIn.value, invest, add, rate, years);
-         catch(e)
-            set the body width to 700px (like code above)
-            errBox.innerText = e.message;
-     */
+// try catch for width
+    try {
+        if (!isValid) {
+            throw new Error("Please correct the entries highlighted below.");
+        }
+        document.body.style.width = "350px";
+        startProjection(name, invest, add, rate, years);
+    } catch (e) {
+        // Handle the exception
+        document.body.style.width = "700px";
+        errBox.innerText = `${e.name}: ${e.message}`;
+    }
 };
+
 
 const startProjection = (name, bal, add, rate, years) => {
     statusMsg.textContent = `Live Projection: ${name}`;
