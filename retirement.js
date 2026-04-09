@@ -35,7 +35,9 @@ const processEntries = (evt) => {
     const name = nameIn.value;
     const email = emailIn.value;
     const dateValue = dateIn.value;
-
+    const invest = parseFloat(investIn.value);
+    const add = parseFloat(addIn.value);
+    const rate = parseFloat(rateIn.value);
     // Ensure the name is not blank
     if (name.trim() === "") {
         $("#name_error").textContent = nameIn.title;
@@ -47,16 +49,37 @@ const processEntries = (evt) => {
         $("#email_error").textContent = emailIn.title;
         isValid = false;
     }
-    if (!dateValue.trim()){
+
+    const retirementDate = new Date(dateValue);
+    if (retirementDate.toString() === "Invalid Date") {
         $("#retire_date_error").textContent = dateIn.title;
         isValid = false;
     } else {
-// Get Date objects for the current data and the date the user inputted for
-        retirement
-        const current = new Date();
-        const date = new Date(dateValue);
+        const today = new Date();
+        // Date math to get years
+        years = retirementDate.getFullYear() - today.getFullYear();
+        if (years <= 0) {
+            $("#retire_date_error").textContent = "Date must be in a future year.";
+            isValid = false;
+        }
+    }
 
-    // TODO: Numeric Validations
+// 4. Numeric Validations
+
+
+        if (isNaN(invest) || invest <= 0) {
+            $("#investment_error").textContent = investIn.title;
+            isValid = false;
+        }
+        if (isNaN(add) || add < 0) {
+            $("#monthly_add_error").textContent = addIn.title;
+            isValid = false;
+        }
+        if (isNaN(rate) || rate <= 0 || rate > 20) {
+            $("#rate_error").textContent = rateIn.title;
+            isValid = false;
+        }
+
 
     /* TODO: Code try-catch logic
         try
