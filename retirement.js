@@ -126,7 +126,12 @@ const startProjection = (name, bal, add, rate, years) => {
 
 const setTestData = () => {
     resetForm();
-    // TODO: set default values for all input fields
+    nameIn.value = "Kyler";
+    emailIn.value = "kyler@example.com";
+    investIn.value = "50000";
+    addIn.value = "200";
+    rateIn.value = "6";
+    dateIn.value = "2035-01-01";
 };
 
 const resetForm = () => {
