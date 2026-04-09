@@ -72,7 +72,7 @@ const processEntries = (evt) => {
             isValid = false;
         }
         if (isNaN(add) || add < 0) {
-            $("#monthly_add_error").textContent = addIn.title;
+            $("#add_error").textContent = addIn.title;
             isValid = false;
         }
         if (isNaN(rate) || rate <= 0 || rate > 20) {
@@ -85,12 +85,14 @@ const processEntries = (evt) => {
         if (!isValid) {
             throw new Error("Please correct the entries highlighted below.");
         }
+        // Success state
         document.body.style.width = "350px";
         startProjection(name, invest, add, rate, years);
+
     } catch (e) {
-        // Handle the exception
+        // Error state
         document.body.style.width = "700px";
-        errBox.innerText = `${e.name}: ${e.message}`;
+        errBox.innerText = e.message;
     }
 };
 
