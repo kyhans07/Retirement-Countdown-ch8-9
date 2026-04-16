@@ -120,6 +120,15 @@ const processEntries = (evt) => {
     }
 };
 
+/**
+ * Starts an interval to perform monthly evaluations of savings growth.
+ * Displays yearly balance.
+ * @param {string} name - The client's name
+ * @param {number} bal - Starting investment balance
+ * @param {number} add - Monthly contribution amount
+ * @param {number} rate - Annual interest rate
+ * @param {number} years - Number of years until retirement.
+ */
 
 const startProjection = (name, bal, add, rate, years) => {
     statusMsg.textContent = `Live Projection: ${name}`;
