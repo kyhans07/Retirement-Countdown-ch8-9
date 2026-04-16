@@ -1,6 +1,6 @@
 # Retirement Countdown
 ## Output
-![Gif of Output](assets/RetirementProjectorOutput.gif)
+![Gif of Output](assets/ezgif-54478a7f9fedecb6.gif)
 ## Table of Contents
 * [Authors](#authors)
 * [Purpose](#purpose)
@@ -54,5 +54,4 @@ financials on their projected retirement date
 * Regional Money Formatting
 * Local Storage manipulation
 ## Credits
-###### This is an adaptation of a script provided by [Debbie
-Johnson](h
+###### This is an adaptation of a script provided by [DebbieJohnson](h
