@@ -1,6 +1,11 @@
 "use strict";
 
-// Defer in HTML allows us to grab these immediately at the top
+
+/**
+ * Helper function to select a single DOM element.
+ * @param {string} selector - The CSS selector for the element.
+ * @returns {Element|null} The selected element or null if not found.
+ */
 const $ = selector => document.querySelector(selector);
 
 const nameIn    = $("#client_name");
@@ -15,7 +20,13 @@ const output    = $("#projection_output");
 const form      = $("#projection_form");
 const testData  = $("#test_data");
 
+/** * @type {number|null} The ID of the interval object used to calculate the yearly projections.
+ */
+
 let projectionTimer = null;
+
+/** * @type {Intl.NumberFormat} An Intl number formatter set up to convert a number to US formatted currency.
+ */
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -23,6 +34,12 @@ const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
 });
+
+/**
+ * Processes form entries, performs data validation/conversion, and handles UI error states.
+ * If data is valid, it initiates the projection.
+ * @param {Event} evt - The form submission event.
+ */
 
 const processEntries = (evt) => {
     let isValid = true;
