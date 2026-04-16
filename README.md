@@ -12,11 +12,12 @@
 
 * [Kyler Hanson](https://github.com/kyhans07)
 ## Purpose
-The purpose of this program is to take in information about the user's financials
-(savings balance, monthly savings additions, interest rate) and information about
-the person (name, email) and the date they want to retire. It then uses this data
-to determine what the projected income of the user will be based on their
-financials on their projected retirement date
+
+This a program designed to take user input like their balance, monthly additions, 
+and isurance rate to calculate earnings based on when they want to retire. This 
+runs a projection of the income to help them determine if they are contributing
+enough money.
+
 ## Script Breakdown
 ### Important Globals
 * `projectionTimer` - The id of the interval object used to calcualte the yearly
@@ -34,24 +35,22 @@ financials on their projected retirement date
 * It will then display that information to the user at the end of a year
 * Calculates a new year in one second increments
 * `setTestData`
-* Loads a bunch of test data for easier testing
+* Loads test data for easier testing
 * `resetForm`
-* resets the form data and the outputs returning the program to its initial state
+* resets the form data and sets program to its initial state
 * `document.onDOMContentLoaded`
-* Adds event listeners to the form and buttons which calls the relevant functions
+* Adds event listeners which calls the relevant functions
 * `setLocalStorage`
-* Takes in all the input data from the form and saves it to local storage
-* Only gets valid inputs
+* Takes data and saves it to local storage
+* Only valid inputs
 * `getLocalStorage`
 * Pulls any information about previous inputs and puts them in the inputs when
   the page is loaded
 * Pulls the info from local storage
-## New Concepts
-* Date Manipulation
+##  Concepts
+* Input Date Manipulation
 * Intervals
-* Regex & Data Validation
-* Error Creation and Handling
-* Regional Money Formatting
+* Data Validation
+* Error Handling + Warnings
+Money Formatting
 * Local Storage manipulation
-## Credits
-###### This is an adaptation of a script provided by [DebbieJohnson](h
